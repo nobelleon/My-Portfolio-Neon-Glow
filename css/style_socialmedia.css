@@ -34,6 +34,19 @@ body{
     background-color: #021027;
     color: var(--text-color);
     }
+
+     .background {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image: radial-gradient(white -10%, white -15%, transparent 20%, transparent);
+            mask-image: radial-gradient(white -10%, white -15%, transparent 20%, transparent);
+  }
    
    
     /* ================= Header ============ */
