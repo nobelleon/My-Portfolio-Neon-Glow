@@ -6,8 +6,8 @@
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
     --first-color: hsl(239, 70%, 56%);
-    --title-color: hsl(316, 33%, 16%);
-    --text-color: hsl(266, 33%, 32%);
+    --title-color: hsl(316, 33%, 46%);
+    --text-color: hsl(266, 33%, 52%);
     --white-color: hsl(210, 40%, 98%);
     --body-color: hsl(216, 16%, 95%);
   
@@ -31,7 +31,7 @@ body{
     background: #000;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
-    background-color: black;
+    background-color: #021027;
     color: var(--text-color);
     }
    
@@ -141,7 +141,7 @@ body{
   /*=============== CARD ===============*/
   .card {
     background-color: transparent;
-    box-shadow: 0 4px 24px rgba(240, 243, 247, 0.1);
+    box-shadow: 0 4px 24px rgba(240, 247, 247, 0.877);
     padding: 2rem 4.5rem 3rem;
     border-radius: 3rem;
     text-align: center;
