@@ -6175,6 +6175,7 @@
   }
   nav ul{
     list-style: none;
+    font-family: "Josefin Slab", serif;
   }
   nav ul li {
     float: left;
