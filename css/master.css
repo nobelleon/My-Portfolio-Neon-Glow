@@ -6562,6 +6562,15 @@
   animation: showTab 1s ease-in-out 1;
 }
 
+.text-gradient-about{
+  background-image: linear-gradient(
+      to right, rgb(241, 233, 233), rgb(236, 230, 235),rgb(157, 235, 157), rgb(76, 230, 62)
+  );
+  display: inline-block;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 
  /* .text-gradient-thank{
   background-image: linear-gradient(
