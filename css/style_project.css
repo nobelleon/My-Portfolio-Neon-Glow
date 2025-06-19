@@ -6224,4 +6224,52 @@
   }
   
 
-    
+  /* Custom Dot Cursor */
+
+.header:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 50px;
+  height: 2px;
+  background-color: #52a3b6;
+  transform: translateX(-50%);
+}
+
+
+@media (min-width: 800px) {
+  .col {
+    width: 50%;
+    float: left;
+ }
+  .col:nth-of-type(2n+1) {
+    clear: left;
+ }
+}
+.col.col--full {
+  width: 100%;
+}
+html, body, html *, body * {
+  cursor: none;
+}
+.cursor-dot, .cursor-dot-outline {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: cyan;
+}
+.cursor-dot-outline {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(100, 197, 197);
+}
