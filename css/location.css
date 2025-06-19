@@ -6453,10 +6453,10 @@ html, body, html *, body * {
 .cursor-dot {
   width: 8px;
   height: 8px;
-  background-color: cyan;
+  background-color: #52a3b6;
 }
 .cursor-dot-outline {
   width: 40px;
   height: 40px;
-  background-color: rgb(100, 197, 197);
+  background-color: rgba(125, 186, 200, 0.5);
 }
