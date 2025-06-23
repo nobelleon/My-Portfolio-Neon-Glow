@@ -302,4 +302,13 @@ html, body, html *, body * {
   background-color: rgba(125, 186, 200, 0.5);
 }
 
-  
+/*  SVG Ellipses Sphere */
+
+svg {
+	position: absolute;
+	top: 20%;
+	left: 10%;
+	transform: translate(-50%,-50%);
+	max-height: 150px;
+	max-width: 150px;
+}
