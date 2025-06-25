@@ -169,3 +169,182 @@ body {
     display: wave;
   }
 
+
+  /* Music Player */
+
+   html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    overflow: hidden;
+  }
+  
+  #typing { 
+    display: flex;   
+    overflow: hidden;   
+  }
+  
+  #typing::before {
+    background: #021027;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: transform 0.3s ease;
+  }
+  
+  #content {
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+  }
+  
+  #content:hover {
+    transform: scale(1.1);
+  }
+  
+  .audioBox {
+    display: flex;
+    justify-content: bottom;
+    align-items: bottom;
+    flex-direction: column;
+    width: 50%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translate(0, -50%);
+    max-width: 450px;
+  }
+  
+  #snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .snowflake {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+  
+  #audioPlayerContainer {
+    position: relative;
+    bottom: -200px;
+    opacity: 1;
+    z-index: 1000;
+  }
+  
+  #audioPlayerControl {
+    position: relative;
+    background-color: #021027;
+    border-radius: 30px;
+    width: 300px;
+    height: 50px;
+    box-shadow: 0 0 20px rgba(107, 107, 107, 0.5);
+    z-index: 1000;
+  }
+  
+  #progressBarContainer {
+    position: absolute;
+    top: 45%;
+    left: 15%;
+    width: 70%;
+    height: 5px;
+    background: linear-gradient(
+      to right,
+      cyan var(--progress, 0%),
+      #ddd var(--progress, 0%)
+    );
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #progressBarContainer::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    transform: translateY(-50%);
+    background-color: transparent;
+  }
+  
+  #progressBar {
+    position: relative;
+    width: 0;
+    height: 100%;
+    border-radius: 5px;
+  }
+  
+  #progressBar::after {
+    content: "";
+    position: absolute;
+    right: -7.5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-color: cyan;
+    box-shadow: 0 1px 10px rgba(107, 107, 107, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  #progressBarContainer:hover #progressBar::after {
+    opacity: 1;
+  }
+  
+  #volumeControlContainer {
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+    z-index: 0;
+  }
+  
+  #volumeControl {
+    width: 50px;
+  }
+  
+  #volumeIcon {
+    position: relative;
+    left: 216px;
+  }
+  
+  /* Hide the default style of the range control */
+  [type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    outline: 0;
+    background-color: transparent;
+    width: 500px;
+  }
+  
+  /* Defines the style of the range control track */
+  [type="range"]::-webkit-slider-runnable-track {
+    height: 5px;
+    border-radius: 5px;
+    background: #ffffff;
+  }
+  
+  /* Defines the style of the range control thumb */
+  [type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: cyan;
+    margin-top: -5px;
+  }
+  
+

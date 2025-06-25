@@ -213,3 +213,211 @@ setInterval(renderTime, 40);
   window.addEventListener("DOMContentLoaded", initializeVisualizer);
 })();
 
+
+
+// --------------------------------------------------------------- //
+// -----------------------   Music Player  ----------------------- //
+
+const audioPlayer = document.getElementById("audioPlayer");
+const audioPlayerControl = document.getElementById("audioPlayerControl");
+const playPauseIcon = document.getElementById("playPauseIcon");
+const playIcon = document.getElementById("playIcon");
+const pauseIcon = document.getElementById("pauseIcon");
+const progressBarContainer = document.getElementById("progressBarContainer");
+const progressBar = document.getElementById("progressBar");
+const volumeIcon = document.getElementById("volumeIcon");
+const volumeControlContainer = document.getElementById(
+	"volumeControlContainer"
+);
+const volumeControl = document.getElementById("volumeControl");
+const contentElement = document.getElementById("content");
+const snowContainer = document.getElementById("snow-container");
+
+
+let isDragging = false;
+let clickTime, inputTime;
+let currentLyricIndex = 0;
+let index = 0;
+let snowAnimation;
+
+playPauseIcon.addEventListener("click", togglePlay);
+audioPlayer.addEventListener("timeupdate", updateProgressBar);
+audioPlayer.addEventListener("ended", resetPlayer);
+progressBarContainer.addEventListener("click", seek);
+progressBarContainer.addEventListener("mousedown", startDrag);
+document.addEventListener("mousemove", drag);
+document.addEventListener("mouseup", endDrag);
+volumeIcon.addEventListener("click", toggleVolumeControl);
+volumeControl.addEventListener("input", updateVolume);
+document.addEventListener("click", hideVolumeControl);
+
+function togglePlay() {
+	audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause();
+	playIcon.style.display = audioPlayer.paused ? "block" : "none";
+	pauseIcon.style.display = audioPlayer.paused ? "none" : "block";
+}
+
+function updateProgressBar() {
+	if (!isDragging) {
+		const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+		progressBar.style.width = `${progress}%`;
+		progressBarContainer.style.setProperty("--progress", `${progress}%`);
+	}
+}
+
+function seek(event) {
+	audioPlayer.currentTime =
+		(event.offsetX / progressBarContainer.offsetWidth) * audioPlayer.duration;
+}
+
+function resetPlayer() {
+	playIcon.style.display = "block";
+	pauseIcon.style.display = "none";
+	progressBar.style.width = "0%";
+	progressBarContainer.style.setProperty("--progress", "0%");
+	audioPlayer.currentTime = 0;
+}
+
+function startDrag(event) {
+	isDragging = true;
+	drag(event);
+}
+
+function drag(event) {
+	if (isDragging) {
+		const percent = Math.min(
+			Math.max(
+				(event.clientX - progressBarContainer.getBoundingClientRect().left) /
+					progressBarContainer.offsetWidth,
+				0
+			),
+			1
+		);
+		progressBar.style.width = `${percent * 100}%`;
+		progressBarContainer.style.setProperty("--progress", `${percent * 100}%`);
+	}
+}
+
+function endDrag(event) {
+	if (isDragging) {
+		isDragging = false;
+		const percent = Math.min(
+			Math.max(
+				(event.clientX - progressBarContainer.getBoundingClientRect().left) /
+					progressBarContainer.offsetWidth,
+				0
+			),
+			1
+		);
+		audioPlayer.currentTime = percent * audioPlayer.duration;
+	}
+}
+
+function toggleVolumeControl() {
+	volumeControlContainer.style.transform =
+		volumeControlContainer.style.transform === "translate(230px, -40px)"
+			? "translate(310px, -40px)"
+			: "translate(230px, -40px)";
+
+	clearTimeout(clickTime);
+	clickTime = setTimeout(() => {
+		if (audioPlayer.volume == volumeControl.value) {
+			volumeControlContainer.style.transform = "translate(230px, -40px)";
+		}
+	}, 5000);
+}
+
+function updateVolume() {
+	audioPlayer.volume = volumeControl.value;
+	clearTimeout(inputTime);
+	inputTime = setTimeout(() => {
+		volumeControlContainer.style.transform = "translate(230px, -40px)";
+	}, 2000);
+}
+
+function hideVolumeControl(event) {
+	if (
+		!volumeControlContainer.contains(event.target) &&
+		!volumeIcon.contains(event.target)
+	) {
+		volumeControlContainer.style.transform = "translate(230px, -40px)";
+	}
+}
+
+
+function createSnowflakes() {
+	for (let i = 0; i < 100; i++) {
+		const snowflake = document.createElement("div");
+		snowflake.className = "snowflake";
+		snowflake.style.width = `${Math.random() * 5 + 2}px`;
+		snowflake.style.height = snowflake.style.width;
+		snowflake.style.left = `${Math.random() * 100}vw`;
+		snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+		snowflake.style.animationDelay = `${Math.random() * 2}s`;
+		snowContainer.appendChild(snowflake);
+	}
+}
+
+function animateSnowflakes() {
+	document.querySelectorAll(".snowflake").forEach((snowflake) => {
+		const startPosition = parseFloat(snowflake.style.left);
+		const endPosition = startPosition + (Math.random() * 10 - 5);
+		snowflake.animate(
+			[
+				{ transform: `translate(0, -10px)`, opacity: 0 },
+				{ opacity: 0.8, offset: 0.1 },
+				{
+					transform: `translate(${endPosition - startPosition}vw, 100vh)`,
+					opacity: 0
+				}
+			],
+			{
+				duration: parseFloat(snowflake.style.animationDuration) * 1000,
+				iterations: Infinity
+			}
+		);
+	});
+}
+
+audioPlayer.addEventListener("play", () => {
+	createSnowflakes();
+	snowAnimation = requestAnimationFrame(animateSnowflakes);
+	currentLyricIndex = 0;
+	updateLyrics();
+});
+
+audioPlayer.addEventListener("pause", () => {
+	if (snowAnimation) cancelAnimationFrame(snowAnimation);
+	document
+		.querySelectorAll(".snowflake")
+		.forEach((snowflake) =>
+			snowflake.getAnimations().forEach((animation) => animation.pause())
+		);
+});
+
+audioPlayer.addEventListener("ended", () =>
+	cancelAnimationFrame(snowAnimation)
+);
+audioPlayer.addEventListener("seeked", () => {
+	currentLyricIndex =
+		lyrics.findIndex((lyric) => lyric.time > audioPlayer.currentTime) - 1;
+	currentLyricIndex = Math.max(currentLyricIndex, 0);
+	contentElement.textContent = "";
+	index = 0;
+	updateLyrics();
+});
+
+let mouseMoveTimeout;
+document.addEventListener("mousemove", () => {
+	clearTimeout(mouseMoveTimeout);
+	const audioBox = document.querySelector(".audioBox");
+	audioBox.style.transform = "translate(0, -50%)";
+	audioBox.style.opacity = 1;
+	document.body.style.cursor = "auto";
+	mouseMoveTimeout = setTimeout(() => {
+		audioBox.style.transform = "translate(0, 50%)";
+		audioBox.style.opacity = 0;
+		document.body.style.cursor = "none";
+	}, 5000);
+});
+
