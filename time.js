@@ -33,24 +33,24 @@ function renderTime() {
   ctx.fillRect(0, 0, 500, 500);
   //Hours
   ctx.beginPath();
-  ctx.arc(260, 330, 130, degToRad(270), degToRad(hrs * 30 - 90));
+  ctx.arc(260, 200, 130, degToRad(270), degToRad(hrs * 30 - 90));
   ctx.stroke();
   //Minutes
   ctx.beginPath();
-  ctx.arc(260, 330, 100, degToRad(270), degToRad(smoothmin * 6 - 90));
+  ctx.arc(260, 200, 100, degToRad(270), degToRad(smoothmin * 6 - 90));
   ctx.stroke();
   //Seconds
   ctx.beginPath();
-  ctx.arc(260, 330, 70, degToRad(270), degToRad(smoothsec * 6 - 90));
+  ctx.arc(260, 200, 70, degToRad(270), degToRad(smoothsec * 6 - 90));
   ctx.stroke();
   //Date
   ctx.font = "13px Helvetica";
   ctx.fillStyle = "rgba(00, 255, 255, 1)";
-  ctx.fillText(today, 210, 320);
+  ctx.fillText(today, 210, 190);
   //Time
   ctx.font = "13px Helvetica Bold";
   ctx.fillStyle = "rgba(00, 255, 255, 1)";
-  ctx.fillText(time + ":" + mil, 210, 350);
+  ctx.fillText(time + ":" + mil, 210, 220);
 }
 setInterval(renderTime, 40);
 
