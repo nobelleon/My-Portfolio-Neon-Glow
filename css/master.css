@@ -7772,3 +7772,16 @@ html, body, html *, body * {
   }
 }
 
+/* Split Text */
+
+.splt{
+    text-align:center;
+    color: white;
+    font-size: clamp(2rem, 6rem, 4.5vw);
+    letter-spacing: 0.05rem;
+    will-change: transform;
+}
+
+.splt * {
+  will-change: transform;
+}
