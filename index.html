@@ -326,7 +326,7 @@
   <header>
     <nav>
       <ul>
-         <li><a href="index.html">Home</a></li>
+         <li><a href="welcome.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="my_youtube.html">My Youtube</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
@@ -385,13 +385,26 @@
   </header>
   
   <body>
+    <!-- Intro Loading -->
+
+    <div class="preloader">
+      <div class="progress-bar"></div>
+      <div class="text-container">
+        <div class="loading-text initial">Loading</div>
+        <div class="loading-text complete">Complete</div>
+      </div>
+      <div class="percentage-wrap">
+        <div class="percentage">0</div>
+      </div>
+    </div>
+
     <br><br><br><br><br><br><br><br><br><br>
     <p class="message-left">Copyright &copy; 2025 Nobelleon Mahardhika</p>
       
         
         <audio src="http://webaudioapi.com/samples/audio-tag/chrono.mp3"></audio>
 
-        <script src="audio_welcome.js"></script>
+        <script src="welcome.js"></script>
 
     
   </body>
@@ -400,4 +413,6 @@
   <div class="cursor-dot"></div>
   
   <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>     
+  <script src="https://unpkg.com/split-type"></script>
 </html>
