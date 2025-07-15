@@ -23,10 +23,10 @@ return wrap.offsetWidth - percentage.offsetWidth;
 };
 
 const colorStages = [
-{ bg: "rgb(60, 66, 55)", text: "rgb(230, 225, 215)" },
-{ bg: "rgb(200, 180, 160)", text: "rgb(60, 66, 55)" },
-{ bg: "rgb(230, 225, 215)", text: "rgb(60, 66, 55)" },
-{ bg: "rgb(100, 110, 90)", text: "rgb(230, 225, 215)" }
+{ bg: "rgb(60, 66, 55)", text: "rgb(38, 48, 31)" },
+{ bg: "rgb(233, 97, 181)", text: "rgb(226, 64, 164)" },
+{ bg: "rgb(226, 146, 247)", text: "rgb(206, 97, 233)" },
+{ bg: "#4c74b4", text: "#0e3b85" }
 ];
 
 function updateColors(progress) {
