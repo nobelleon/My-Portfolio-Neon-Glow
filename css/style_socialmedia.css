@@ -227,6 +227,7 @@ body{
   p1 {
     font-weight: 700;
     top: 80%;
+    left: 11%;
     text-align: center;
     font-size: 30px;
     font-family: Hack, sans-serif;
@@ -306,7 +307,7 @@ html, body, html *, body * {
 
 svg {
 	position: absolute;
-	top: 20%;
+	top: 25%;
 	left: 10%;
 	transform: translate(-50%,-50%);
 	max-height: 150px;
@@ -323,7 +324,7 @@ svg {
   width: 60px;
   height: 60px;
   margin: 15px;    
-  bottom: 250px;
+  bottom: 200px;
   left: 300px;
   border: none;
   outline: none;
