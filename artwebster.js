@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
           CREATIVE: "INSIGHTFUL",
           PROCESS: "THINKING",
           IS: "BRINGS",
-          MYSTERIOUS: "ILLUMINATING",
+          MYSTERIOUS: "UNIVERSE",
           S: "SHARP",
           I: "INSIGHT",
           M: "MINDFUL",
