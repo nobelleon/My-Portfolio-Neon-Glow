@@ -16,6 +16,17 @@
   --font-mono: "IBM Plex Mono", monospace;
   --gutter: 1rem; /* 16px */
   --margin: 2rem; /* 32px */
+
+   /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  /* Transitions */
+  --transition-default: 0.3s ease;
+  --transition-slow: 1s ease;
+
 }  
 
 body {
@@ -144,52 +155,87 @@ body {
     font-family: var(--font-mono);
   }    
     
-  /* navbar */
-  nav{
-    color: #FFF;
-    float: right;
-    margin: -5px 90px;
-  }
-  nav ul{
-    list-style: none;
-    font-family: "Josefin Slab", serif;
-  }
-  nav ul li {
-    float: left;
-    transition: .3s;
-  }
-  nav ul li a{
-    text-decoration: none;
-    color: white;
-    transition: .5;
-    font-size: 11px;
-    margin-left:16px;  
-  }
-  nav ul li:hover a{
-    text-decoration: none;
-    color: #591BC5;;
-  }
-  nav ul li:hover{
-    height: 55px;
-    padding-top: 30px;
-    margin-top: -30px;
-   background: white;
-    text-decoration: none;
-    transform: skew(15deg);
-  }
+  /* menubar */
 
+  .menu {
+    flex: 1;
+    text-align: right;
+  }
   
-  ul {
+  .menu ul {
     list-style: none;
-    font-size: 12.5%;
   }
   
-  a {
+  .menu li {
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .menu a {
+    font-size: 0.75rem;
     text-decoration: none;
+    color: inherit;
+    position: relative;
+    display: inline-block;
+    padding-right: 0;
+    transition: padding-right var(--transition-default),
+      padding-left var(--transition-default);
   }
   
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  /* Strikethrough line */
+  .menu a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    background-color: currentColor;
+    transition: width var(--transition-default);
+    max-width: calc(100% - 16px);
   }
+  
+  /* Circle element */
+  .menu a::before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%) scale(0);
+    opacity: 0;
+    transition: transform var(--transition-default),
+      opacity var(--transition-default), right var(--transition-default);
+  }
+  
+  /* Hover effects */
+  .menu a:hover {
+    padding-right: 16px;
+    padding-left: 0;
+  }
+  
+  .menu a:hover::after {
+    width: 100%;
+  }
+  
+  .menu a:hover::before {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+    right: 0;
+  }
+  
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+
+    .menu {
+      text-align: left;
+      margin-top: var(--spacing-md); 
+    }
+  
+  }
+  
+  
+  
