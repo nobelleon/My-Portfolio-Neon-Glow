@@ -645,3 +645,4 @@ var cursor = {
 }
 
 cursor.init();
+
