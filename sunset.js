@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   setTimeout(() => {
     if (backgroundMusic) {
-      backgroundMusic.volume = 0.5;
+      backgroundMusic.volume = 1;
       backgroundMusic.play().catch((e) => {});
     }
   }, 500);
