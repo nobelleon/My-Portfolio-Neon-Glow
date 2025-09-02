@@ -721,12 +721,12 @@
   .z_cursor-dot {
     width: 8px;
     height: 8px;
-    background-color: cyan;
+    background-color: rgb(243, 215, 58);
   }
   .z_cursor-dot-outline {
     width: 40px;
     height: 40px;
-    background-color: rgba(125, 186, 200, 0.5);
+    background-color: rgba(200, 189, 125, 0.5);
   }
   
 
