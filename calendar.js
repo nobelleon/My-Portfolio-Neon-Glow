@@ -28,6 +28,7 @@ const fixedHolidays = [
   { month: 4, day: 5, name: "Children's Day (Japan)" },
   { month: 6, day: 4, name: "Independence Day (USA)" },
   { month: 7, day: 15, name: "Assumption Day" },
+  { month: 7, day: 17, name: "Independence Day (Indonesia)" },
   { month: 8, day: 21, name: "International Day of Peace" },
   { month: 9, day: 31, name: "Halloween" },
   { month: 10, day: 11, name: "Veterans Day" },
