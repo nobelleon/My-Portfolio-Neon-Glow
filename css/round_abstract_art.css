@@ -114,6 +114,16 @@ p {
     20% { background-color: #fff; }
 }
 
+.main-content {
+  position: relative;
+  z-index: 10;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* MENU */
 
@@ -325,3 +335,28 @@ p {
   right: -4px;
   left: auto;
 }
+
+/* SOUND */ 
+
+  .btn {
+    font-family: "TheGoodMonolith", monospace;
+    display: inline-block;
+    border: none;
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--text); 
+    z-index: 1;
+    opacity: 0.8; 
+    margin-left: 30%;     
+    margin-top: 20%;
+    background: transparent;
+   } 
+  
+  .btn:active {
+    scale: 0.95;
+  }
+  
+  .btn:focus {
+    color: var(--text);
+  }
