@@ -21,7 +21,11 @@ const monthBackgrounds = {
 const fixedHolidays = [
   { month: 0, day: 1, name: "New Year's Day" },
   { month: 0, day: 26, name: "Republic Day (India)" },
+  { month: 0, day: 16, name: "Isra' Mi'raj (Prophet Muhammad)" },
   { month: 1, day: 14, name: "Valentine's Day" },
+  { month: 1, day: 16, name: "Chinese New Year's Day" },
+  { month: 1, day: 17, name: "Chinese New Year's Day" },
+  { month: 1, day: 20, name: "1 Ramadan" },
   { month: 2, day: 17, name: "St. Patrick's Day" },
   { month: 3, day: 22, name: "Earth Day" },
   { month: 4, day: 1, name: "Labour Day" },
