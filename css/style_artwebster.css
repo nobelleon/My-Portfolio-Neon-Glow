@@ -9,9 +9,9 @@
 }
 
 :root {
-  --text: #ce6aec;
+  --text: #f0f8c4;
   --bg: #000000;
-  --highlight-bg: #ce6aec;
+  --highlight-bg: #d8ec66;
   --type-line-opacity: 0.05;
 }
 
