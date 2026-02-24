@@ -4,7 +4,7 @@ html, body { height: 100%; overflow: hidden;}
 
 :root { --sphere-radius: 200px; --sphere-resolution: 20;
         
-        --color-on-surface: var(--color-primary);
+        --color-on-surface: #a8bde9;
         --hover-filter: brightness(1.2);
 
         --font-primary: "PPSupplyMono", "Courier New", monospace;
@@ -34,7 +34,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(45deg, #ec66cf, #021027);
+    background: linear-gradient(45deg, #ec66cf, #a8bde9);
     filter: invert(1);
     overflow: hidden;
     margin: 0;
@@ -78,7 +78,7 @@ p {
     font-size: 1.2em;
     color: #eee;
     text-shadow: 
-    1px 1px 0px #000000,
+    1px 1px 0px #474747,
     1px -1px 0 #ffffff;
 }
 .sphere {
@@ -360,3 +360,123 @@ p {
   .btn:focus {
     color: var(--text);
   }
+
+
+   /* Image Cursor Trail Effects */
+
+ .hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-svg {
+  width: 100vw;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+.trail-img {
+  position: absolute;
+  object-fit: cover;
+  transform-origin: center;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 12;
+}
+
+.trail-image {
+  position: absolute;
+  overflow: hidden;
+  will-change: transform;
+  transform-origin: center;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  z-index: 12;
+}
+
+.image-fragment {
+  position: absolute;
+  overflow: hidden;
+  will-change: transform, clip-path;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.fragment-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: translate3d(0, 0, 0);
+}
+
+.speed-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+}
+
+.cursor-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  z-index: 20;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 1024px) {
+  .text-item {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .cursor-hint {
+    display: none;
+  }
+}
