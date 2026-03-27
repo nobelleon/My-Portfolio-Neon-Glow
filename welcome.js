@@ -189,7 +189,7 @@ class PreloaderManager {
    this.ctx = null;
    this.animationId = null;
    this.startTime = null;
-   this.duration = 2000; // 2 seconds
+   this.duration = 6000; // 6 seconds
    this.createLoadingScreen();
  }
 
